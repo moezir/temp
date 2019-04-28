@@ -56,10 +56,23 @@
   $(".lblLoginStatus").text(response.status);
    if(response.authResponse !=null)
    {
-      $(".lblExpiresIn").text(response.authResponse.expiresIn);
+      $(".lblExpiresIn").text(ConverUnixToHuman(response.authResponse.expiresIn));
 
    }
   }
+ }
+ function ConverUnixToHuman(UNIXtime){
+var date = new Date(UNIXtime*1000);
+// Hours part from the timestamp
+var hours = date.getHours();
+// Minutes part from the timestamp
+var minutes = "0" + date.getMinutes();
+// Seconds part from the timestamp
+var seconds = "0" + date.getSeconds();
+
+// Will display time in 10:30:23 format
+var formattedTime = hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);
+  return formattedTime;
  }
 </script>
     <div id="fb-root"></div>
@@ -73,7 +86,6 @@
    <label class="lblExpiresIn"></label>
   </div>
  </div>
- 
 </body>
 
 </html>
