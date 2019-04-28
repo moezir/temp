@@ -54,6 +54,11 @@
   if(response != undefined)
   {
   $(".lblLoginStatus").text(response.status);
+   if(response.authResponse !=null)
+   {
+      $(".lblExpiresIn").text(response.authResponse.expiresIn);
+
+   }
   }
  }
 </script>
@@ -62,9 +67,10 @@
  
  <div class="container">
  <h2>Login</h2>
-<div class="fb-login-button" data-width="" data-size="large" data-button-type="login_with" data-auto-logout-link="false" data-use-continue-as="true"></div>
+  <div class="fb-login-button" data-width="" data-size="large" data-button-type="login_with" data-auto-logout-link="true" data-use-continue-as="true"></div>
   <div>
    <label class="lblLoginStatus"></label>
+   <label class="lblExpiresIn"></label>
   </div>
  </div>
  
